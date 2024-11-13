@@ -4,62 +4,51 @@
     <img src="./public/img/result.png" alt="Hello from rust">
 </p>
 
-Aplicacion web que despliega un servidor web y levanta una simple API con una ruta que muestra el mensaje **¡hello world with go!**
+Web application that deploys a web server and builds a simple API with a route that displays the message **Hello, world from Rust!**
 
 ## :open_book: How to use
 ### Pre-requisites
-   * lenguaje rust
-   * editor de codigo
+* rust language
+* code editor
 ---
 
 * Clone the repository
     ```
-    git clone https://github.com/Pablo-man/java_docker_project.git
+    git clone https://github.com/Pablo-man/rs_docker_project.git
     ```
-* Abre el programa con el editor de codigo de tu preferencia
-* Abre una terminal que apunte a la raiz del proyecto
-* Ejecuta el comando:
+* Open the program with the code editor of your choice
+* Open a terminal that points to the root of the project
+* Run the commands:
 
-    `go run main.go`
-* Visita tu `localhost:8080` para visualizar los resultados
+    ```
+    cargo clean
+
+    cargo build --release
+
+    ./target/release/rust 
+    ```
+* Visit your `localhost:9000` to view the results
 
     > [!TIP]
-    > Por defecto la aplicacion se desplegara en el puerto `8080`, si es necesario cambiarlo a otro debe modificarlo desde el archivo `main.go` y en el apartado `http.ListenAndServe(":<PORTNUMBER>", nil)` colocar el puerto deseado
+    > By default the application will be deployed on port `9000`, if it is necessary to change it to another one you must modify it from the `src/main.rs` file and in the `bind("0.0.0.0:<PORT>>")` section place the desired port
 
 ## :rocket: How to run with docker
-Visitar el siguiente enlance para conocer el proceso de generacion de la imagen del proyecto
+Visit the following link to learn about the process of generating the project image
 
-### Como crear la imagen
-```html
-docker build -t <NEWIMAGENAME> .
-<!-- Example -->
-<!-- docker build -t rusthello . -->
-```
-### Como ejecutar la imagen (Contenedor)
-* Descargar del repositorio remoto la imagen
+:whale2: [GO](https://hub.docker.com/repository/docker/pamendeza/rs_docker_project "Docker steps")
 
-    `docker pull pamendeza/rust_docker_project `
-* Crear el contenedor a partir de la imagen
-    ```html
-    docker run -d --name <NEWDOCKERNAME> -p <PORT>:8080 <IMAGENAME>
+## :light_rail: PAAS Deploy(Railway)
+For its deployment in a PAAS we will rely on railway and its easy implementation thanks to its container management. 
 
-    <!-- Example -->
-    <!-- docker run -d --name gohello -p 3000:8080 pamendeza/run_docker_project:v1.0 -->
-    ```
-    > [!TIP]
-    > Si se desea mapear a un puerto diferente la aplicacion, unicamente se debe cambiar el numero de puerto que se encuentra a la izquierda debido a que el de la derecha es propio del contenedor y no se puede modificar.
-### Como subir al repositorio remoto la imagen
-* Colocar un tag a la imagen, en la cual se especifica el nombre o id de la imagen que deseamos subir seguido de el nombre de usuario de dockerhub, nombre del repositorio y version de la imagen
-    ```html
-    docker tag <IMAGENAME>||<IDIMAGE> <USERNAME>/<REPOSITORIENAME>:<VERSION>
-    <!-- Example -->
-    <!-- docker tag rusthello pamendeza/rust_docker_project:v1.0 -->
-    ```
-* Subir la imagen tageada la cual consiste del nombre de usuario de dockerhub, el nombre del repositorio y la version de la imagen. Hacia el repositorio remoto
-    ```html
-    docker push  <USERNAME>/<REPOSITORIENAME>:<VERSION>
-    <!-- Example -->
-    <!-- docker push pamendeza/rust_docker_project:v1.0 -->
-    ```
-    [View results](#results)
-## :light_rail: PAAS Deploy (Railway)
+![Railway Service](./public/img/railwayDeploy.png "Service")
+
+The platform automatically uses our Dockerfile to build the container. 
+
+![Build Container](./public/img/dockerFile.png "Build Configuration")
+
+> [!IMPORTANT]
+> The application is automatically deployed on port 9000
+
+![Generate Domain](./public/img/domain.png "Domain")
+
+:nut_and_bolt:[Hello World](https://rsdockerproject-production.up.railway.app "click for visit")
