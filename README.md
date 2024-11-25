@@ -37,18 +37,24 @@ Visit the following link to learn about the process of generating the project im
 
 :whale2: [GO](https://hub.docker.com/repository/docker/pamendeza/rs_docker_project "Docker steps")
 
-## :light_rail: PAAS Deploy(Railway)
-For its deployment in a PAAS we will rely on railway and its easy implementation thanks to its container management. 
+## :tennis: PAAS Deploy(Render) without Docker
+Type of deployment was:
 
-![Railway Service](./public/img/railwayDeploy.png "Service")
+![Render Service](./public/img/type.png "Service")
 
-The platform automatically uses our Dockerfile to build the container. 
+Configurations:
+* Build and start commmands to compile and execute the web application on render.
 
-![Build Container](./public/img/dockerFile.png "Build Configuration")
+![Render Config](./public/img/conf.png "Configuration")
 
-> [!IMPORTANT]
-> The application is automatically deployed on port 9000
+![Render Config](./public/img/conf1.png "Configuration")
 
-![Generate Domain](./public/img/domain.png "Domain")
 
-:nut_and_bolt:[Hello World](https://rsdockerproject-production.up.railway.app "click for visit")
+State:
+
+![Render Service](./public/img/renderDeploy1.png "Service")
+
+![Render Service](./public/img/renderDeploy.png "Service")
+
+
+:cake:[Hello World](https://py-project-docker.onrender.com/ "click for visit")
